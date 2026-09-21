@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Abdülhakim Gurme — Menü</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌶</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0a;
+            --bg2: #111111;
+            --bg-card: #161616;
+            --bg-card-h: #1c1c1c;
+            --gold: #c8a961;
+            --gold-l: #e2cea6;
+            --gold-d: #9a7d3a;
+            --gold-glow: rgba(200,169,97,0.15);
+            --txt: #f0ece2;
+            --txt2: #8a8578;
+            --txt3: #5a5650;
+            --brd: rgba(200,169,97,0.12);
+            --brd2: rgba(200,169,97,0.06);
+            --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --ff-d: 'Playfair Display', Georgia, serif;
+            --ff-b: 'Cormorant Garamond', Georgia, serif;
+            --ff-u: 'Lato', 'Helvetica Neue', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: var(--ff-b);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── LOADER ── */
+        .loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--bg);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity .8s, visibility .8s;
+        }
+        .loader.hide { opacity: 0; visibility: hidden; }
+        .loader-logo { font-family: var(--ff-d); font-size: 1.8rem; font-weight: 600; color: var(--gold); letter-spacing: .15em; margin-bottom: 2rem; }
+        .loader-bar { width: 120px; height: 2px; background: var(--brd); border-radius: 2px; overflow: hidden; }
+        .loader-bar::after { content:''; display: block; width: 40%; height: 100%; background: var(--gold); border-radius: 2px; animation: slide 1.2s ease-in-out infinite; }
+        @keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; height: 100vh; min-height: 550px; max-height: 850px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('assets/hero.jpg') center/cover no-repeat;
+            transform: scale(1.05); transition: transform 8s ease-out;
+        }
+        .hero-bg.loaded { transform: scale(1); }
+        .hero-ov {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,10,.4) 0%, rgba(10,10,10,.6) 50%, rgba(10,10,10,.95) 100%);
+        }
+        .hero-c { position: relative; z-index: 2; padding: 0 2rem; }
+        .hero-orn { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; opacity:0; animation: fadeUp 1s .3s ease forwards; }
+        .hero-orn .ln { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .hero-orn .dm { width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
+        .hero-sub { font-family: var(--ff-u); font-size: .7rem; font-weight: 300; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; opacity:0; animation: fadeUp 1s .5s ease forwards; }
+        .hero-title {
+            font-family: var(--ff-d); font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700; color: var(--gold-l); line-height: 1.1;
+            letter-spacing: .05em; text-shadow: 0 4px 30px rgba(200,169,97,.3);
+            opacity:0; animation: fadeUp 1s .7s ease forwards;
+        }
+        .hero-title em { font-style: italic; font-weight: 500; color: var(--gold); }
+        .hero-tag { font-family: var(--ff-b); font-size: 1.15rem; font-weight: 300; font-style: italic; color: var(--txt2); margin-top: 1rem; letter-spacing: .08em; opacity:0; animation: fadeUp 1s .9s ease forwards; }
+        .hero-scroll {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: .5rem;
+            color: var(--txt3); font-family: var(--ff-u); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+            opacity:0; animation: fadeUp 1s 1.2s ease forwards;
+        }
+        .hero-scroll .arr { width: 1px; height: 30px; background: linear-gradient(180deg, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{opacity:.3;transform:scaleY(.7)} 50%{opacity:1;transform:scaleY(1)} }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ── NAV ── */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,10,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--brd); transition: box-shadow .3s;
+        }
+        .nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,.5); }
+        .nav-in {
+            display: flex; align-items: center; padding: 0 .5rem;
+            overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+        }
+        .nav-in::-webkit-scrollbar { display: none; }
+        .nav-a {
+            flex-shrink: 0; padding: 1rem 1rem;
+            font-family: var(--ff-u); font-size: .65rem; font-weight: 400;
+            letter-spacing: .18em; text-transform: uppercase; color: var(--txt2);
+            text-decoration: none; border-bottom: 2px solid transparent; transition: all .3s;
+            white-space: nowrap;
+        }
+        .nav-a:hover, .nav-a.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+        /* ── CONTAINER ── */
+        .mc { max-width: 680px; margin: 0 auto; padding: 0 1rem; }
+
+        /* ── CATEGORY ── */
+        .cat { padding-top: 2rem; padding-bottom: 2.5rem; }
+        .cat-hdr {
+            position: relative; border-radius: 16px; overflow: hidden; margin-bottom: 2rem;
+            aspect-ratio: 16/9;
+        }
+        .cat-hdr img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s; }
+        .cat-hdr:hover img { transform: scale(1.05); }
+        .cat-hdr-ov {
+            position: absolute; inset: 0;
+            background: linear-gradient(0deg, rgba(10,10,10,.85) 0%, rgba(10,10,10,.3) 50%, rgba(10,10,10,.1) 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 2rem;
+        }
+        .cat-icon { font-size: 2rem; margin-bottom: .5rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+        .cat-title { font-family: var(--ff-d); font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 600; color: var(--gold-l); letter-spacing: .1em; text-shadow: 0 2px 15px rgba(0,0,0,.5); }
+        .cat-sub { font-family: var(--ff-b); font-size: .9rem; font-weight: 300; font-style: italic; color: var(--txt2); margin-top: .25rem; }
+        .cat-hdr::after { content:''; position: absolute; bottom: -1px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: .4; }
+
+        /* ── SUB-HEADER (for Malzemesiz, Ek Ürünler etc.) ── */
+        .sub-hdr {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 2rem 0 1rem; padding-bottom: .5rem;
+            border-bottom: 1px solid var(--brd);
+        }
+        .sub-hdr-icon { font-size: 1.3rem; }
+        .sub-hdr-txt { font-family: var(--ff-d); font-size: 1.1rem; font-weight: 500; color: var(--gold); letter-spacing: .05em; }
+
+        /* ── MENU ITEMS ── */
+        .items { display: flex; flex-direction: column; }
+        .item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.1rem .5rem; border-bottom: 1px solid var(--brd2);
+            opacity: 0; transform: translateY(15px);
+            transition: opacity .5s, transform .5s, background .3s;
+            border-radius: 8px;
+        }
+        .item.vis { opacity: 1; transform: translateY(0); }
+        .item:hover { background: var(--bg-card); }
+        .item:last-child { border-bottom: none; }
+        .item-ico {
+            flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; background: linear-gradient(135deg, var(--bg-card), var(--bg2));
+            border: 1px solid var(--brd);
+        }
+        .item-d { flex: 1; min-width: 0; }
+        .item-n { font-family: var(--ff-d); font-size: 1.05rem; font-weight: 500; color: var(--txt); margin-bottom: .1rem; }
+        .item-desc { font-family: var(--ff-b); font-size: .82rem; font-weight: 300; font-style: italic; color: var(--txt2); line-height: 1.4; }
+        .item-p { flex-shrink: 0; font-family: var(--ff-d); font-size: 1.1rem; font-weight: 600; color: var(--gold); white-space: nowrap; }
+        .item-badge {
+            display: inline-block; font-family: var(--ff-u); font-size: .5rem; font-weight: 700;
+            letter-spacing: .15em; text-transform: uppercase; color: var(--bg);
+            background: var(--gold); padding: .12rem .45rem; border-radius: 3px;
+            margin-left: .4rem; vertical-align: middle;
+        }
+
+        /* ── DUAL PRICE (for baklava: porsiyon + kg) ── */
+        .item-prices { flex-shrink: 0; text-align: right; }
+        .item-prices .p-main { font-family: var(--ff-d); font-size: 1.1rem; font-weight: 600; color: var(--gold); }
+        .item-prices .p-kg { font-family: var(--ff-u); font-size: .6rem; color: var(--txt3); letter-spacing: .05em; margin-top: .15rem; }
+
+        /* ── NOTE BOX ── */
+        .note-box {
+            display: flex; align-items: center; gap: .75rem;
+            margin: 1rem 0; padding: .85rem 1rem;
+            background: var(--bg-card); border-radius: 10px;
+            border: 1px solid var(--brd);
+        }
+        .note-box .note-icon { font-size: 1.2rem; flex-shrink: 0; }
+        .note-box .note-txt { font-family: var(--ff-b); font-size: .85rem; color: var(--gold-l); font-style: italic; }
+
+        /* ── DIVIDER ── */
+        .div { display: flex; align-items: center; justify-content: center; gap: 1.5rem; padding: .5rem 0; }
+        .div .dl { flex: 1; max-width: 100px; height: 1px; background: linear-gradient(90deg, transparent, var(--brd), transparent); }
+        .div .dd { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; opacity: .5; }
+
+        /* ── FOOTER ── */
+        .footer { text-align: center; padding: 3rem 1.5rem 4rem; border-top: 1px solid var(--brd); margin-top: 2rem; }
+        .footer-logo { font-family: var(--ff-d); font-size: 1.4rem; font-weight: 600; color: var(--gold); letter-spacing: .1em; margin-bottom: .75rem; }
+        .footer-info { font-family: var(--ff-b); font-size: .95rem; color: var(--txt2); line-height: 2; }
+        .footer-info a { color: var(--gold); text-decoration: none; }
+        .footer-social { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+        .footer-social a {
+            width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--brd);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--txt2); font-size: 1.1rem; text-decoration: none; transition: all .3s;
+        }
+        .footer-social a:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+        .footer-copy { font-family: var(--ff-u); font-size: .65rem; color: var(--txt3); margin-top: 2rem; letter-spacing: .1em; }
+
+        /* ── ALLERGEN ── */
+        .allerg { text-align: center; font-family: var(--ff-u); font-size: .65rem; color: var(--txt3); padding: 1.5rem; line-height: 1.8; letter-spacing: .05em; }
+
+        /* ── BACK TO TOP ── */
+        .btt {
+            position: fixed; bottom: 2rem; right: 1.5rem; width: 44px; height: 44px;
+            border-radius: 50%; background: rgba(16,16,16,.9); border: 1px solid var(--brd);
+            backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 1.2rem; cursor: pointer; z-index: 50;
+            opacity: 0; visibility: hidden; transform: translateY(10px); transition: all .3s;
+        }
+        .btt.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .btt:hover { background: var(--gold); color: var(--bg); }
+
+        /* ── GEL-AL BANNER ── */
+        .gel-al-banner {
+            display: flex; align-items: center; justify-content: center; gap: .6rem;
+            padding: .6rem 1rem; margin: 0 0 1.5rem;
+            background: linear-gradient(135deg, rgba(200,169,97,.1), rgba(200,169,97,.05));
+            border: 1px solid var(--brd); border-radius: 10px;
+        }
+        .gel-al-banner span {
+            font-family: var(--ff-u); font-size: .6rem; font-weight: 700;
+            letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (min-width: 768px) {
+            .mc { padding: 0 2rem; }
+            .item-ico { width: 64px; height: 64px; }
+            .item { gap: 1.25rem; padding: 1.3rem .75rem; }
+            .cat-hdr { aspect-ratio: 2/1; border-radius: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════ LOADER ══════ -->
+<div class="loader" id="loader">
+    <div class="loader-logo">Abdülhakim Gurme</div>
+    <div class="loader-bar"></div>
+</div>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-c">
+        <div class="hero-orn"><span class="ln"></span><span class="dm"></span><span class="ln"></span></div>
+        <p class="hero-sub">Adıyaman Usulü · Çiğköfte & Baklava</p>
+        <h1 class="hero-title">Abdülhakim<br><em>Gurme</em></h1>
+        <p class="hero-tag">Lezzetin Doğal Hali</p>
+    </div>
+    <div class="hero-scroll"><span>Menüyü Keşfet</span><span class="arr"></span></div>
+</section>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav" id="nav">
+    <div class="nav-in">
+        <a href="#durum" class="nav-a active" data-s="durum">Dürümler</a>
+        <a href="#pors" class="nav-a" data-s="pors">Porsiyonlar</a>
+        <a href="#baklava" class="nav-a" data-s="baklava">Baklavalar</a>
+        <a href="#kahve" class="nav-a" data-s="kahve">Kahveler</a>
+        <a href="#icecek" class="nav-a" data-s="icecek">İçecekler</a>
+    </div>
+</nav>
+
+<!-- ══════ MENU ══════ -->
+<main class="mc">
+
+    <div class="gel-al-banner">
+        <span>🏷 Gel-Al Kampanya Fiyatları</span>
+    </div>
+
+    <!-- ─── DÜRÜMLER ─── -->
+    <section class="cat" id="durum">
+        <div class="cat-hdr">
+            <img src="assets/durum.jpg" alt="Dürümler" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🌯</span>
+                <h2 class="cat-title">Dürümler</h2>
+                <p class="cat-sub">Adıyaman usulü, taze sarılmış</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">🌯</div>
+                <div class="item-d">
+                    <div class="item-n">Dürüm</div>
+                    <div class="item-desc">100 gr çiğköfte</div>
+                </div>
+                <div class="item-p">₺70</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">💪</div>
+                <div class="item-d">
+                    <div class="item-n">Mega Dürüm</div>
+                    <div class="item-desc">125 gr çiğköfte</div>
+                </div>
+                <div class="item-p">₺90</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🔥</div>
+                <div class="item-d">
+                    <div class="item-n">Ultra Mega Dürüm <span class="item-badge">Popüler</span></div>
+                    <div class="item-desc">150 gr çiğköfte</div>
+                </div>
+                <div class="item-p">₺110</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">👑</div>
+                <div class="item-d">
+                    <div class="item-n">Duble Dürüm</div>
+                    <div class="item-desc">175 gr çiğköfte</div>
+                </div>
+                <div class="item-p">₺130</div>
+            </div>
+        </div>
+        <div class="note-box">
+            <span class="note-icon">🥔</span>
+            <span class="note-txt">Patoslu Dürüm: Tüm dürumlere +₺20</span>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── PORSİYONLAR ─── -->
+    <section class="cat" id="pors">
+        <div class="cat-hdr">
+            <img src="assets/hero.jpg" alt="Porsiyonlar" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🥗</span>
+                <h2 class="cat-title">Porsiyonlar</h2>
+                <p class="cat-sub">Yeşillik, lavaş ve acı sos ile servis</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">1️⃣</div>
+                <div class="item-d">
+                    <div class="item-n">1 Kişilik</div>
+                    <div class="item-desc">200 gr · 1 çeyrek göbek, 2 lavaş, 1 acı sos</div>
+                </div>
+                <div class="item-p">₺135</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">2️⃣</div>
+                <div class="item-d">
+                    <div class="item-n">2 Kişilik</div>
+                    <div class="item-desc">400 gr · 2 çeyrek göbek, 4 lavaş, 2 acı sos</div>
+                </div>
+                <div class="item-p">₺250</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">⚖️</div>
+                <div class="item-d">
+                    <div class="item-n">500 gr Porsiyon</div>
+                    <div class="item-desc">2 çeyrek göbek, 4 lavaş, 3 acı sos</div>
+                </div>
+                <div class="item-p">₺275</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">3️⃣</div>
+                <div class="item-d">
+                    <div class="item-n">3 Kişilik</div>
+                    <div class="item-desc">650 gr · 2.5 çeyrek göbek, 5 lavaş, 3 acı sos</div>
+                </div>
+                <div class="item-p">₺350</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">4️⃣</div>
+                <div class="item-d">
+                    <div class="item-n">4 Kişilik</div>
+                    <div class="item-desc">800 gr · 3 çeyrek göbek, 6 lavaş, 4 acı sos</div>
+                </div>
+                <div class="item-p">₺420</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">👨‍👩‍👧‍👦</div>
+                <div class="item-d">
+                    <div class="item-n">Aile Boyu <span class="item-badge">En Avantajlı</span></div>
+                    <div class="item-desc">1000 gr · 4 çeyrek göbek, 8 lavaş, 5 acı sos</div>
+                </div>
+                <div class="item-p">₺490</div>
+            </div>
+        </div>
+
+        <!-- Malzemesiz -->
+        <div class="sub-hdr">
+            <span class="sub-hdr-icon">🔴</span>
+            <span class="sub-hdr-txt">Çiğköfte (Malzemesiz)</span>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">🔴</div>
+                <div class="item-d">
+                    <div class="item-n">500 gr Çiğköfte</div>
+                    <div class="item-desc">Malzemesiz, sade çiğköfte</div>
+                </div>
+                <div class="item-p">₺180</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🏆</div>
+                <div class="item-d">
+                    <div class="item-n">1 KG Çiğköfte</div>
+                    <div class="item-desc">Malzemesiz, sade çiğköfte</div>
+                </div>
+                <div class="item-p">₺300</div>
+            </div>
+        </div>
+
+        <!-- Ek Ürünler -->
+        <div class="sub-hdr">
+            <span class="sub-hdr-icon">➕</span>
+            <span class="sub-hdr-txt">Ek Ürünler</span>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">🥬</div>
+                <div class="item-d">
+                    <div class="item-n">Marul</div>
+                    <div class="item-desc">Adet</div>
+                </div>
+                <div class="item-p">₺85</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🫓</div>
+                <div class="item-d">
+                    <div class="item-n">Lavaş</div>
+                    <div class="item-desc">Adet</div>
+                </div>
+                <div class="item-p">₺5</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🌶️</div>
+                <div class="item-d">
+                    <div class="item-n">Acı Sos</div>
+                    <div class="item-desc">Adet</div>
+                </div>
+                <div class="item-p">₺5</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍋</div>
+                <div class="item-d">
+                    <div class="item-n">Ekşi Sos</div>
+                    <div class="item-desc">Adet</div>
+                </div>
+                <div class="item-p">₺5</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── BAKLAVALAR ─── -->
+    <section class="cat" id="baklava">
+        <div class="cat-hdr">
+            <img src="assets/baklava.jpg" alt="Baklavalar" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🍯</span>
+                <h2 class="cat-title">Baklavalar</h2>
+                <p class="cat-sub">Antep fıstığı & ceviz, el yapımı</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">🍯</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Klasik Baklava</div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺240</div>
+                    <div class="p-kg">KG ₺1.200</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🖤</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Özel Kara Baklava <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥐</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Şöbiyet</div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🐚</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Midye</div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥕</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Havuç Dilimi</div>
+                    <div class="item-desc">Porsiyon 150 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺225</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🌰</div>
+                <div class="item-d">
+                    <div class="item-n">Cevizli Baklava</div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺150</div>
+                    <div class="p-kg">KG ₺750</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🧶</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Burma Kadayıf</div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺240</div>
+                    <div class="p-kg">KG ₺1.200</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">👑</div>
+                <div class="item-d">
+                    <div class="item-n">Fıstık Sarma <span class="item-badge">Premium</span></div>
+                    <div class="item-desc">Porsiyon 200 gr</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺400</div>
+                    <div class="p-kg">KG ₺2.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── KAHVELER ─── -->
+    <section class="cat" id="kahve">
+        <div class="cat-hdr">
+            <img src="assets/hot-drinks.jpg" alt="Kahveler" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">☕</span>
+                <h2 class="cat-title">Kahveler & Çay</h2>
+                <p class="cat-sub">Özenle hazırlanan sıcak içecekler</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">🍵</div>
+                <div class="item-d">
+                    <div class="item-n">Çay</div>
+                    <div class="item-desc">Demlik çay</div>
+                </div>
+                <div class="item-p">₺20</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">☕</div>
+                <div class="item-d">
+                    <div class="item-n">Türk Kahvesi</div>
+                    <div class="item-desc">Geleneksel cezvede</div>
+                </div>
+                <div class="item-p">₺110</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🫖</div>
+                <div class="item-d">
+                    <div class="item-n">Filtre Kahve</div>
+                    <div class="item-desc">Taze çekilmiş filtre</div>
+                </div>
+                <div class="item-p">₺140</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🤎</div>
+                <div class="item-d">
+                    <div class="item-n">Cappuccino</div>
+                    <div class="item-desc">Espresso & kadife köpük</div>
+                </div>
+                <div class="item-p">₺150</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">⚡</div>
+                <div class="item-d">
+                    <div class="item-n">Americano</div>
+                    <div class="item-desc">Espresso & sıcak su</div>
+                </div>
+                <div class="item-p">₺150</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥛</div>
+                <div class="item-d">
+                    <div class="item-n">Caffe Latte</div>
+                    <div class="item-desc">Espresso & buğulu süt</div>
+                </div>
+                <div class="item-p">₺185</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍮</div>
+                <div class="item-d">
+                    <div class="item-n">Caramel Macchiato</div>
+                    <div class="item-desc">Karamel sos, süt, espresso</div>
+                </div>
+                <div class="item-p">₺225</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍫</div>
+                <div class="item-d">
+                    <div class="item-n">White Chocolate Mocha</div>
+                    <div class="item-desc">Beyaz çikolata, espresso, süt</div>
+                </div>
+                <div class="item-p">₺245</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── SOĞUK İÇECEKLER ─── -->
+    <section class="cat" id="icecek">
+        <div class="cat-hdr">
+            <img src="assets/icecekler.jpg" alt="İçecekler" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🥤</span>
+                <h2 class="cat-title">İçecekler</h2>
+                <p class="cat-sub">Soğuk & ferahlatıcı seçenekler</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico">💧</div>
+                <div class="item-d">
+                    <div class="item-n">Su</div>
+                    <div class="item-desc">500 mL</div>
+                </div>
+                <div class="item-p">₺10</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥛</div>
+                <div class="item-d">
+                    <div class="item-n">Ayran</div>
+                    <div class="item-desc">180 mL</div>
+                </div>
+                <div class="item-p">₺20</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🫧</div>
+                <div class="item-d">
+                    <div class="item-n">Sade Soda</div>
+                    <div class="item-desc">200 mL</div>
+                </div>
+                <div class="item-p">₺20</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍊</div>
+                <div class="item-d">
+                    <div class="item-n">Meyveli Soda</div>
+                    <div class="item-desc">200 mL</div>
+                </div>
+                <div class="item-p">₺30</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🟣</div>
+                <div class="item-d">
+                    <div class="item-n">Şalgam</div>
+                    <div class="item-desc">330 mL</div>
+                </div>
+                <div class="item-p">₺30</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥒</div>
+                <div class="item-d">
+                    <div class="item-n">Turşu Suyu</div>
+                    <div class="item-desc">190 mL</div>
+                </div>
+                <div class="item-p">₺30</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🧊</div>
+                <div class="item-d">
+                    <div class="item-n">Soğuk Çay</div>
+                    <div class="item-desc">250 mL</div>
+                </div>
+                <div class="item-p">₺40</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥤</div>
+                <div class="item-d">
+                    <div class="item-n">Sarıyer Kola</div>
+                    <div class="item-desc">330 mL</div>
+                </div>
+                <div class="item-p">₺50</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🖤</div>
+                <div class="item-d">
+                    <div class="item-n">Black Bruin</div>
+                    <div class="item-desc">250 mL</div>
+                </div>
+                <div class="item-p">₺50</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">✨</div>
+                <div class="item-d">
+                    <div class="item-n">Niğde Gazozu</div>
+                    <div class="item-desc">250 mL</div>
+                </div>
+                <div class="item-p">₺50</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍷</div>
+                <div class="item-d">
+                    <div class="item-n">Litrelik Kola</div>
+                    <div class="item-desc">1 lt.</div>
+                </div>
+                <div class="item-p">₺80</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🟣</div>
+                <div class="item-d">
+                    <div class="item-n">Litrelik Şalgam</div>
+                    <div class="item-desc">1 lt.</div>
+                </div>
+                <div class="item-p">₺80</div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🍹</div>
+                <div class="item-d">
+                    <div class="item-n">Meyveli Gazoz</div>
+                    <div class="item-desc">330 mL</div>
+                </div>
+                <div class="item-p">₺80</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="allerg">
+        Fiyatlara KDV dahildir. Menümüz mevsimsel olarak güncellenebilir.<br>
+        Alerjen bilgisi için lütfen personelimize danışınız.
+    </div>
+
+</main>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+    <div class="footer-logo">Abdülhakim Gurme</div>
+    <div class="footer-info">
+        🌶 Adıyaman Usulü Çiğköfte & Baklava<br>
+        📍 Adres bilgisi eklenecek<br>
+        📞 <a href="tel:+905xxxxxxxxx">0 (5XX) XXX XX XX</a><br>
+        🕐 Her gün 10:00 – 23:00
+    </div>
+    <div class="footer-social">
+        <a href="#" title="Instagram">📸</a>
+        <a href="#" title="WhatsApp">💬</a>
+        <a href="#" title="Telefon">📞</a>
+    </div>
+    <p class="footer-copy">© 2024 Abdülhakim Gurme. Tüm hakları saklıdır.</p>
+</footer>
+
+<button class="btt" id="btt" aria-label="Yukarı çık">↑</button>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{
+    setTimeout(()=>{
+        document.getElementById('loader').classList.add('hide');
+        document.getElementById('heroBg').classList.add('loaded');
+    },800);
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{
+    e.forEach((en,i)=>{
+        if(en.isIntersecting){
+            setTimeout(()=>en.target.classList.add('vis'),i*60);
+            obs.unobserve(en.target);
+        }
+    });
+},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.item').forEach(i=>obs.observe(i));
+
+// Nav active
+const nav=document.getElementById('nav');
+const links=document.querySelectorAll('.nav-a');
+const secs=document.querySelectorAll('.cat');
+const secObs=new IntersectionObserver(e=>{
+    e.forEach(en=>{
+        if(en.isIntersecting){
+            links.forEach(l=>l.classList.remove('active'));
+            const a=document.querySelector(`.nav-a[data-s="${en.target.id}"]`);
+            if(a){a.classList.add('active');a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+        }
+    });
+},{threshold:.3,rootMargin:'-80px 0px -50% 0px'});
+secs.forEach(s=>secObs.observe(s));
+
+// Scroll effects
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',scrollY>100);
+    btt.classList.toggle('show',scrollY>600);
+},{passive:true});
+
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Nav smooth scroll
+links.forEach(l=>{
+    l.addEventListener('click',e=>{
+        e.preventDefault();
+        const t=document.getElementById(l.dataset.s);
+        if(t){
+            const p=t.getBoundingClientRect().top+scrollY-nav.offsetHeight-10;
+            window.scrollTo({top:p,behavior:'smooth'});
+        }
+    });
+});
+
+// Parallax
+const hBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+    if(scrollY<innerHeight) hBg.style.transform=`scale(${1+scrollY*.0001}) translateY(${scrollY*.3}px)`;
+},{passive:true});
+</script>
+</body>
+</html>
