@@ -251,6 +251,73 @@
             letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
         }
 
+        /* ── ALLERGEN SECTION & LIGHTBOX ── */
+        .allergen-container {
+            display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem;
+        }
+        @media (min-width: 600px) {
+            .allergen-container { grid-template-columns: 1fr 1fr; }
+        }
+        .allergen-card {
+            background: var(--bg-card); border: 1px solid var(--brd); border-radius: 16px;
+            overflow: hidden; cursor: pointer; transition: all .3s ease; position: relative;
+        }
+        .allergen-card:hover {
+            border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.6);
+        }
+        .allergen-img-wrap {
+            position: relative; overflow: hidden; background: #000;
+        }
+        .allergen-img-wrap img {
+            width: 100%; height: auto; display: block; transition: transform .4s ease;
+        }
+        .allergen-card:hover .allergen-img-wrap img {
+            transform: scale(1.02);
+        }
+        .zoom-badge {
+            position: absolute; bottom: 12px; right: 12px;
+            background: rgba(10,10,10,.85); backdrop-filter: blur(8px);
+            border: 1px solid var(--gold); border-radius: 20px;
+            padding: 6px 14px; font-family: var(--ff-u); font-size: .65rem;
+            color: var(--gold); font-weight: 600; letter-spacing: .05em;
+            display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(0,0,0,.5);
+        }
+        .allergen-label {
+            padding: .9rem 1.25rem; font-family: var(--ff-d); font-size: 1.05rem;
+            color: var(--txt); letter-spacing: .05em; text-align: center;
+            border-top: 1px solid var(--brd); background: rgba(200,169,97,.04);
+        }
+
+        /* Lightbox modal */
+        .lightbox-modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,.92); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center; z-index: 1000;
+            opacity: 0; visibility: hidden; transition: all .3s ease; padding: 1rem;
+        }
+        .lightbox-modal.active {
+            opacity: 1; visibility: visible;
+        }
+        .lightbox-img {
+            max-width: 95vw; max-height: 90vh; object-fit: contain;
+            border-radius: 12px; border: 1px solid var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,.8); transform: scale(.95);
+            transition: transform .3s ease;
+        }
+        .lightbox-modal.active .lightbox-img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 20px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(30,30,30,.85); border: 1px solid var(--gold);
+            color: var(--gold); font-size: 1.5rem; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            transition: all .2s; z-index: 1001;
+        }
+        .lightbox-close:hover {
+            background: var(--gold); color: var(--bg);
+        }
+
         /* ── RESPONSIVE ── */
         @media (min-width: 768px) {
             .mc { padding: 0 2rem; }
@@ -291,6 +358,7 @@
         <a href="#pors" class="nav-a" data-s="pors">Porsiyonlar</a>
         <a href="#kahve" class="nav-a" data-s="kahve">Kahveler</a>
         <a href="#icecek" class="nav-a" data-s="icecek">İçecekler</a>
+        <a href="#alerjen" class="nav-a" data-s="alerjen">Alerjenler</a>
     </div>
 </nav>
 
@@ -1042,12 +1110,49 @@
         </div>
     </section>
 
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── ALERJEN TABLOSU ─── -->
+    <section class="cat" id="alerjen">
+        <div class="cat-hdr" style="aspect-ratio: auto; min-height: 120px; background: linear-gradient(135deg, rgba(200,169,97,.12), rgba(20,20,20,.95)); border: 1px solid var(--brd); border-radius: 16px;">
+            <div class="cat-hdr-ov" style="background: transparent; position: relative; padding: 1.8rem 1.25rem; text-align: center;">
+                <span class="cat-icon">📋</span>
+                <h2 class="cat-title">Alerjen Bilgilendirme Tablosu</h2>
+                <p class="cat-sub">Değerli misafirlerimiz; sağlığınız ve güvenliğiniz bizim için önceliklidir. Ürünlerimizin alerjen içeriklerini aşağıdaki tablolardan inceleyebilirsiniz.</p>
+            </div>
+        </div>
+
+        <div class="allergen-container">
+            <div class="allergen-card" onclick="openLightbox('assets/alerjen-tablosu-1.jpg')">
+                <div class="allergen-img-wrap">
+                    <img src="assets/alerjen-tablosu-1.jpg" alt="Alerjen Tablosu - 1" loading="lazy">
+                    <div class="zoom-badge">🔍 Büyütmek İçin Dokunun</div>
+                </div>
+                <div class="allergen-label">Alerjen Tablosu · Bölüm 1</div>
+            </div>
+
+            <div class="allergen-card" onclick="openLightbox('assets/alerjen-tablosu-2.jpg')">
+                <div class="allergen-img-wrap">
+                    <img src="assets/alerjen-tablosu-2.jpg" alt="Alerjen Tablosu - 2" loading="lazy">
+                    <div class="zoom-badge">🔍 Büyütmek İçin Dokunun</div>
+                </div>
+                <div class="allergen-label">Alerjen Tablosu · Bölüm 2</div>
+            </div>
+        </div>
+    </section>
+
     <div class="allerg">
         Fiyatlara KDV dahildir. Menümüz mevsimsel olarak güncellenebilir.<br>
-        Alerjen bilgisi için lütfen personelimize danışınız.
+        Alerjen hassasiyetiniz veya özel durumunuz için lütfen sipariş öncesinde servis personelimize danışınız.
     </div>
 
 </main>
+
+<!-- ══════ LIGHTBOX MODAL ══════ -->
+<div class="lightbox-modal" id="lightboxModal" onclick="handleModalClick(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">✕</button>
+    <img src="" id="lightboxImg" class="lightbox-img" alt="Büyütülmüş Alerjen Tablosu">
+</div>
 
 <!-- ══════ FOOTER ══════ -->
 <footer class="footer">
@@ -1069,6 +1174,28 @@
 <button class="btt" id="btt" aria-label="Yukarı çık">↑</button>
 
 <script>
+// Lightbox functions
+function openLightbox(src) {
+    const modal = document.getElementById('lightboxModal');
+    const img = document.getElementById('lightboxImg');
+    img.src = src;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+function handleModalClick(e) {
+    if (e.target.id === 'lightboxModal') {
+        closeLightbox();
+    }
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
+
 // Loader
 window.addEventListener('load',()=>{
     setTimeout(()=>{
