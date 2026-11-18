@@ -185,6 +185,17 @@
         .item-prices .p-main { font-family: var(--ff-d); font-size: 1.1rem; font-weight: 600; color: var(--gold); }
         .item-prices .p-kg { font-family: var(--ff-u); font-size: .6rem; color: var(--txt3); letter-spacing: .05em; margin-top: .15rem; }
 
+        /* ── KÜNEFE PORTION PRICES (1K, 2K, 4K) ── */
+        .p-portions { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; flex-shrink: 0; min-width: 110px; }
+        .p-row { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+        .p-tag {
+            font-family: var(--ff-u); font-size: .62rem; font-weight: 700;
+            padding: .1rem .35rem; border-radius: 3px;
+            background: rgba(200,169,97,0.12); color: var(--gold-l);
+            border: 1px solid rgba(200,169,97,0.25); letter-spacing: .03em;
+        }
+        .p-val { font-family: var(--ff-d); font-size: .95rem; font-weight: 600; color: var(--gold); }
+
         /* ── NOTE BOX ── */
         .note-box {
             display: flex; align-items: center; gap: .75rem;
@@ -440,9 +451,10 @@
                     <div class="item-n">Klasik Peynirli Künefe <span class="item-badge">Geleneksel</span></div>
                     <div class="item-desc">Özel çıtır hamur ve uzayan taze Hatay peyniri</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺340</div>
-                    <div class="p-kg">2K: ₺680 · 3K: ₺1.020 · 4K: ₺1.360</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺340</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺680</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.360</span></div>
                 </div>
             </div>
             <div class="item">
@@ -451,9 +463,10 @@
                     <div class="item-n">Hasır Künefe <span class="item-badge">Popüler</span></div>
                     <div class="item-desc">Özel sahan kaymağı, bol Antep fıstığı ve çıtır ince hasır kadayıf</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺370</div>
-                    <div class="p-kg">2K: ₺740 · 3K: ₺1.100 · 4K: ₺1.480</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺370</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺740</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.480</span></div>
                 </div>
             </div>
             <div class="item">
@@ -462,9 +475,10 @@
                     <div class="item-n">Peynirli Paşa Künefe</div>
                     <div class="item-desc">Hatay peyniri, sahan kaymağı ve bol Antep fıstığı bir arada</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺370</div>
-                    <div class="p-kg">2K: ₺740 · 3K: ₺1.100 · 4K: ₺1.480</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺370</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺740</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.480</span></div>
                 </div>
             </div>
             <div class="item">
@@ -473,9 +487,10 @@
                     <div class="item-n">Fıstıkzade Künefe <span class="item-badge">Özel</span></div>
                     <div class="item-desc">Tüm yüzeyi iri taneli çekilmiş Antep fıstığı ve sahan kaymağı şöleni</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺420</div>
-                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺420</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺840</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.680</span></div>
                 </div>
             </div>
             <div class="item">
@@ -484,9 +499,10 @@
                     <div class="item-n">Yarı Zade Yarı Billuriye <span class="item-badge">Gurme</span></div>
                     <div class="item-desc">Yarısı fıstıkzade, yarısı yemyeşil zümrüt billuriye</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺420</div>
-                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺420</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺840</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.680</span></div>
                 </div>
             </div>
             <div class="item">
@@ -495,9 +511,10 @@
                     <div class="item-n">Sevgi Yolu Künefe <span class="item-badge">Özel Sunum</span></div>
                     <div class="item-desc">Hasır kadayıf, saf fıstık ezmesi ve peynirli 3 kuşağın birleşimi</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺420</div>
-                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺420</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺840</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.680</span></div>
                 </div>
             </div>
             <div class="item">
@@ -506,9 +523,9 @@
                     <div class="item-n">6'lı Lezzet Künefe Tepsisi <span class="item-badge">Mega Boy</span></div>
                     <div class="item-desc">6 farklı künefe çeşidinin aynı tepside sunulduğu muhteşem lezzet</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺900 (2K)</div>
-                    <div class="p-kg">3K: ₺1.350 · 4K: ₺1.800</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺900</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.800</span></div>
                 </div>
             </div>
             <div class="item">
@@ -517,9 +534,10 @@
                     <div class="item-n">Karışık Zade Künefe</div>
                     <div class="item-desc">Yerli ceviz ve Antep fıstığının çıtır kadayıfla harmanlanmış hali</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺400</div>
-                    <div class="p-kg">2K: ₺800 · 3K: ₺1.200 · 4K: ₺1.600</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺400</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺800</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.600</span></div>
                 </div>
             </div>
             <div class="item">
@@ -528,9 +546,10 @@
                     <div class="item-n">Yarı Yarıya Künefe</div>
                     <div class="item-desc">Klasik peynirli ve yemyeşil fıstıklı iki ayrı tat tek tepside</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺400</div>
-                    <div class="p-kg">2K: ₺800 · 3K: ₺1.200 · 4K: ₺1.600</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺400</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺800</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.600</span></div>
                 </div>
             </div>
             <div class="item">
@@ -539,9 +558,10 @@
                     <div class="item-n">Cevizli Künefe</div>
                     <div class="item-desc">Özel çıtır kadayıf ve bol iri ceviz içi</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺340</div>
-                    <div class="p-kg">2K: ₺680 · 3K: ₺1.020 · 4K: ₺1.360</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺340</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺680</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.360</span></div>
                 </div>
             </div>
             <div class="item">
@@ -550,9 +570,10 @@
                     <div class="item-n">Tahinli Künefe</div>
                     <div class="item-desc">Fırından taze çıkan çıtır künefe üzerine ılık tahin ve ceviz</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺360</div>
-                    <div class="p-kg">2K: ₺720 · 3K: ₺1.080 · 4K: ₺1.440</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺360</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺720</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.440</span></div>
                 </div>
             </div>
             <div class="item">
@@ -561,9 +582,10 @@
                     <div class="item-n">Dondurmalı Künefe <span class="item-badge">Favori</span></div>
                     <div class="item-desc">Çıtır sıcak künefe arasında kalın Maraş kesme dondurması</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺400</div>
-                    <div class="p-kg">2 Kişilik: ₺800</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺400</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺800</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.600</span></div>
                 </div>
             </div>
             <div class="item">
@@ -572,9 +594,10 @@
                     <div class="item-n">Çikolatalı Künefe</div>
                     <div class="item-desc">İçinde akışkan sıcak Belçika çikolatası ve çıtır kadayıf</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺380</div>
-                    <div class="p-kg">2 Kişilik: ₺760</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺380</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺760</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.520</span></div>
                 </div>
             </div>
             <div class="item">
@@ -583,20 +606,10 @@
                     <div class="item-n">Waffle Künefe <span class="item-badge">Özel</span></div>
                     <div class="item-desc">Muz, çilek, kivi taze meyveleri, fıstık topları ve çikolata sosu</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺420</div>
-                    <div class="p-kg">Porsiyon</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🥟</div>
-                <div class="item-d">
-                    <div class="item-n">Gaziantep Katmeri</div>
-                    <div class="item-desc">İncecik çıtır yufka içinde Antep fıstığı, sahan kaymağı ve Urfa sade yağı</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺430</div>
-                    <div class="p-kg">Porsiyon</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺420</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺840</span></div>
+                    <div class="p-row"><span class="p-tag">4 Kişilik</span><span class="p-val">₺1.680</span></div>
                 </div>
             </div>
             <div class="item">
@@ -605,9 +618,9 @@
                     <div class="item-n">Cennet Çamuru <span class="item-badge">Kilis Usulü</span></div>
                     <div class="item-desc">Yoğun çekilmiş taze Antep fıstığı ve sahan kaymağının kadayıfla buluşması</div>
                 </div>
-                <div class="item-prices">
-                    <div class="p-main">₺470</div>
-                    <div class="p-kg">Porsiyon</div>
+                <div class="p-portions">
+                    <div class="p-row"><span class="p-tag">1 Kişilik</span><span class="p-val">₺470</span></div>
+                    <div class="p-row"><span class="p-tag">2 Kişilik</span><span class="p-val">₺940</span></div>
                 </div>
             </div>
         </div>
@@ -656,7 +669,7 @@
                     <div class="item-n">Mevsim Meyve Tabağı</div>
                     <div class="item-desc">Kavun, çilek, kivi, ananas ve taze mevsim meyveleri eşliğinde servis</div>
                 </div>
-                <div class="item-p">₺180</div>
+                <div class="item-p">₺230</div>
             </div>
         </div>
     </section>
