@@ -164,6 +164,10 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.6rem; background: linear-gradient(135deg, var(--bg-card), var(--bg2));
             border: 1px solid var(--brd);
+            overflow: hidden;
+        }
+        .item-ico img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
         }
         .item-d { flex: 1; min-width: 0; }
         .item-n { font-family: var(--ff-d); font-size: 1.05rem; font-weight: 500; color: var(--txt); margin-bottom: .1rem; }
@@ -259,7 +263,7 @@
     <div class="hero-ov"></div>
     <div class="hero-c">
         <div class="hero-orn"><span class="ln"></span><span class="dm"></span><span class="ln"></span></div>
-        <p class="hero-sub">Adıyaman Usulü · Çiğköfte & Baklava</p>
+        <p class="hero-sub">Baklava · Künefe · Çiğköfte · Gurme Tatlar</p>
         <h1 class="hero-title">Abdülhakim<br><em>Gurme</em></h1>
         <p class="hero-tag">Lezzetin Doğal Hali</p>
     </div>
@@ -269,9 +273,11 @@
 <!-- ══════ NAV ══════ -->
 <nav class="nav" id="nav">
     <div class="nav-in">
-        <a href="#durum" class="nav-a active" data-s="durum">Dürümler</a>
+        <a href="#baklava" class="nav-a active" data-s="baklava">Baklavalar</a>
+        <a href="#kunefe" class="nav-a" data-s="kunefe">Künefeler</a>
+        <a href="#dondurma" class="nav-a" data-s="dondurma">Dondurmalar</a>
+        <a href="#durum" class="nav-a" data-s="durum">Dürümler</a>
         <a href="#pors" class="nav-a" data-s="pors">Porsiyonlar</a>
-        <a href="#baklava" class="nav-a" data-s="baklava">Baklavalar</a>
         <a href="#kahve" class="nav-a" data-s="kahve">Kahveler</a>
         <a href="#icecek" class="nav-a" data-s="icecek">İçecekler</a>
     </div>
@@ -279,6 +285,383 @@
 
 <!-- ══════ MENU ══════ -->
 <main class="mc">
+
+    <!-- ─── BAKLAVALAR ─── -->
+    <section class="cat" id="baklava">
+        <div class="cat-hdr">
+            <img src="assets/baklava-havuc-dilimi.jpg" alt="Baklavalar" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🍯</span>
+                <h2 class="cat-title">Baklavalar</h2>
+                <p class="cat-sub">Antep fıstığı, yerli ceviz ve hakiki sade yağ ile el yapımı</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-ozel-kare.jpg" alt="Fıstıklı Özel Kare Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Özel Kare Baklava <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Porsiyon 200 gr · Yoğun boz fıstık & saf sade yağ</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-sobiyet.jpg" alt="Fıstıklı Şöbiyet" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Şöbiyet</div>
+                    <div class="item-desc">Porsiyon 200 gr · Özel sahan kaymağı ve bol fıstıklı</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-fistik-sarma.jpg" alt="Fıstık Sarma" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstık Sarma <span class="item-badge">Premium</span></div>
+                    <div class="item-desc">Porsiyon 200 gr · %90 saf Antep fıstığı ezmesi</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺400</div>
+                    <div class="p-kg">KG ₺2.000</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-havuc-dilimi.jpg" alt="Fıstıklı Havuç Dilimi" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Havuç Dilimi</div>
+                    <div class="item-desc">Porsiyon 150 gr · Çıtır büyük dilim, dondurmaya uygun</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺225</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-yesil-midye.jpg" alt="Yeşil Midye Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Yeşil Midye Baklava <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Porsiyon 200 gr · Zümrüt fıstık katları ve kaymak</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺320</div>
+                    <div class="p-kg">KG ₺1.600</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-midye.jpg" alt="Klasik Midye Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Klasik Midye Baklava</div>
+                    <div class="item-desc">Porsiyon 200 gr · Çıtır midye formu, bol fıstıklı</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺300</div>
+                    <div class="p-kg">KG ₺1.500</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-kruvasan.jpg" alt="Kruvasan Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Kruvasan Baklava <span class="item-badge">Yeni</span></div>
+                    <div class="item-desc">Porsiyon 200 gr · İnce sarım çıtır fıstıklı kruvasan katları</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺320</div>
+                    <div class="p-kg">KG ₺1.600</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-prens.jpg" alt="Prens Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Prens Baklava</div>
+                    <div class="item-desc">Porsiyon 200 gr · Hafif şerbet, taze Antep fıstıklı</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺260</div>
+                    <div class="p-kg">KG ₺1.300</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-cevizli.jpg" alt="Cevizli Baklava" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Cevizli Baklava</div>
+                    <div class="item-desc">Porsiyon 200 gr · Bol iri yerli ceviz içi</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺150</div>
+                    <div class="p-kg">KG ₺750</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-burma-kadayif.jpg" alt="Fıstıklı Burma Kadayıf" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıklı Burma Kadayıf</div>
+                    <div class="item-desc">Porsiyon 200 gr · Fırınlanmış çıtır tel burma</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺240</div>
+                    <div class="p-kg">KG ₺1.200</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/baklava-sutlu-kup-kadayif.jpg" alt="Sütlü Küp Kadayıf" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Sütlü Küp Kadayıf <span class="item-badge">Popüler</span></div>
+                    <div class="item-desc">Porsiyon 200 gr · Hafif sütlü şerbet, kadayıf ve fıstık kreması</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺260</div>
+                    <div class="p-kg">KG ₺1.300</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── KÜNEFELER ─── -->
+    <section class="cat" id="kunefe">
+        <div class="cat-hdr">
+            <img src="assets/kunefe-fistikzade.jpg" id="kunefeHeaderImg" alt="Künefeler" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🥮</span>
+                <h2 class="cat-title">Künefeler & Sıcak Tatlılar</h2>
+                <p class="cat-sub">Köz ateşte taze pişen, uzayan Hatay peynirli ve bol fıstıklı çıtır lezzetler</p>
+            </div>
+        </div>
+        <div class="items" id="kunefeItems">
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-klasik-peynirli.jpg" alt="Klasik Peynirli Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Klasik Peynirli Künefe <span class="item-badge">Geleneksel</span></div>
+                    <div class="item-desc">Özel çıtır hamur ve uzayan taze Hatay peyniri</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺340</div>
+                    <div class="p-kg">2K: ₺680 · 3K: ₺1.020 · 4K: ₺1.360</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-hasir.jpg" alt="Hasır Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Hasır Künefe <span class="item-badge">Popüler</span></div>
+                    <div class="item-desc">Özel sahan kaymağı, bol Antep fıstığı ve çıtır ince hasır kadayıf</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺370</div>
+                    <div class="p-kg">2K: ₺740 · 3K: ₺1.100 · 4K: ₺1.480</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-peynirli-pasa.jpg" alt="Peynirli Paşa Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Peynirli Paşa Künefe</div>
+                    <div class="item-desc">Hatay peyniri, sahan kaymağı ve bol Antep fıstığı bir arada</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺370</div>
+                    <div class="p-kg">2K: ₺740 · 3K: ₺1.100 · 4K: ₺1.480</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-fistikzade.jpg" alt="Fıstıkzade Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstıkzade Künefe <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Tüm yüzeyi iri taneli çekilmiş Antep fıstığı ve sahan kaymağı şöleni</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺420</div>
+                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-yari-zade-billuriye.jpg" alt="Yarı Zade Yarı Billuriye" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Yarı Zade Yarı Billuriye <span class="item-badge">Gurme</span></div>
+                    <div class="item-desc">Yarısı fıstıkzade, yarısı yemyeşil zümrüt billuriye</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺420</div>
+                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-sevgi-yolu.jpg" alt="Sevgi Yolu Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Sevgi Yolu Künefe <span class="item-badge">Özel Sunum</span></div>
+                    <div class="item-desc">Hasır kadayıf, saf fıstık ezmesi ve peynirli 3 kuşağın birleşimi</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺420</div>
+                    <div class="p-kg">2K: ₺840 · 3K: ₺1.260 · 4K: ₺1.680</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-6li-lezzet.jpg" alt="6'lı Lezzet Künefe Tepsisi" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">6'lı Lezzet Künefe Tepsisi <span class="item-badge">Mega Boy</span></div>
+                    <div class="item-desc">6 farklı künefe çeşidinin aynı tepside sunulduğu muhteşem lezzet</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺900 (2K)</div>
+                    <div class="p-kg">3K: ₺1.350 · 4K: ₺1.800</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-karisik-zade.jpg" alt="Karışık Zade Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Karışık Zade Künefe</div>
+                    <div class="item-desc">Yerli ceviz ve Antep fıstığının çıtır kadayıfla harmanlanmış hali</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺400</div>
+                    <div class="p-kg">2K: ₺800 · 3K: ₺1.200 · 4K: ₺1.600</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-yari-yariya.jpg" alt="Yarı Yarıya Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Yarı Yarıya Künefe</div>
+                    <div class="item-desc">Klasik peynirli ve yemyeşil fıstıklı iki ayrı tat tek tepside</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺400</div>
+                    <div class="p-kg">2K: ₺800 · 3K: ₺1.200 · 4K: ₺1.600</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-cevizli.jpg" alt="Cevizli Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Cevizli Künefe</div>
+                    <div class="item-desc">Özel çıtır kadayıf ve bol iri ceviz içi</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺340</div>
+                    <div class="p-kg">2K: ₺680 · 3K: ₺1.020 · 4K: ₺1.360</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-tahinli.jpg" alt="Tahinli Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Tahinli Künefe</div>
+                    <div class="item-desc">Fırından taze çıkan çıtır künefe üzerine ılık tahin ve ceviz</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺360</div>
+                    <div class="p-kg">2K: ₺720 · 3K: ₺1.080 · 4K: ₺1.440</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-dondurmali.jpg" alt="Dondurmalı Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Dondurmalı Künefe <span class="item-badge">Favori</span></div>
+                    <div class="item-desc">Çıtır sıcak künefe arasında kalın Maraş kesme dondurması</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺400</div>
+                    <div class="p-kg">2 Kişilik: ₺800</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-cikolatali.jpg" alt="Çikolatalı Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Çikolatalı Künefe</div>
+                    <div class="item-desc">İçinde akışkan sıcak Belçika çikolatası ve çıtır kadayıf</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺380</div>
+                    <div class="p-kg">2 Kişilik: ₺760</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/kunefe-waffle.jpg" alt="Waffle Künefe" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Waffle Künefe <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Muz, çilek, kivi taze meyveleri, fıstık topları ve çikolata sosu</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺420</div>
+                    <div class="p-kg">Porsiyon</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🥟</div>
+                <div class="item-d">
+                    <div class="item-n">Gaziantep Katmeri</div>
+                    <div class="item-desc">İncecik çıtır yufka içinde Antep fıstığı, sahan kaymağı ve Urfa sade yağı</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺430</div>
+                    <div class="p-kg">Porsiyon</div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-ico">🟢</div>
+                <div class="item-d">
+                    <div class="item-n">Cennet Çamuru <span class="item-badge">Kilis Usulü</span></div>
+                    <div class="item-desc">Yoğun çekilmiş taze Antep fıstığı ve sahan kaymağının kadayıfla buluşması</div>
+                </div>
+                <div class="item-prices">
+                    <div class="p-main">₺470</div>
+                    <div class="p-kg">Porsiyon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
+
+    <!-- ─── DONDURMALAR & MEYVE ─── -->
+    <section class="cat" id="dondurma">
+        <div class="cat-hdr">
+            <img src="assets/dondurma-iri-fistikli.jpg" alt="Dondurmalar" loading="lazy">
+            <div class="cat-hdr-ov">
+                <span class="cat-icon">🍨</span>
+                <h2 class="cat-title">Dondurmalar & Meyve</h2>
+                <p class="cat-sub">Hakiki Maraş dövme dondurması ve taze meyve sunumları</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-ico"><img src="assets/dondurma-iri-fistikli.jpg" alt="İri Antep Fıstıklı Dondurma" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">İri Antep Fıstıklı Dondurma <span class="item-badge">Özel</span></div>
+                    <div class="item-desc">Tüm yüzeyi bütün tane Antep fıstıkları ile kaplı kesme dondurma topları</div>
+                </div>
+                <div class="item-p">₺150</div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/dondurma-toz-fistikli.jpg" alt="Toz Fıstıklı Dondurma" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Toz Fıstıklı Dondurma</div>
+                    <div class="item-desc">İnce çekilmiş zümrüt yeşili Antep fıstığı ile kaplanmış Maraş dondurması</div>
+                </div>
+                <div class="item-p">₺130</div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/dondurma-kesme-fistikli.jpg" alt="Fıstık Ezmeli Kesme Dondurma" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Fıstık Ezmeli Kesme Dondurma</div>
+                    <div class="item-desc">Dışı saf fıstık ezmesi sarılı, içi Maraş kesme dondurması</div>
+                </div>
+                <div class="item-p">₺160</div>
+            </div>
+            <div class="item">
+                <div class="item-ico"><img src="assets/meyve-tabagi.jpg" alt="Mevsim Meyve Tabağı" loading="lazy"></div>
+                <div class="item-d">
+                    <div class="item-n">Mevsim Meyve Tabağı</div>
+                    <div class="item-desc">Kavun, çilek, kivi, ananas ve taze mevsim meyveleri eşliğinde servis</div>
+                </div>
+                <div class="item-p">₺180</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
 
     <div class="gel-al-banner">
         <span>🏷 Gel-Al Kampanya Fiyatları</span>
@@ -458,110 +841,6 @@
                     <div class="item-desc">Adet</div>
                 </div>
                 <div class="item-p">₺5</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="div"><span class="dl"></span><span class="dd"></span><span class="dl"></span></div>
-
-    <!-- ─── BAKLAVALAR ─── -->
-    <section class="cat" id="baklava">
-        <div class="cat-hdr">
-            <img src="assets/baklava.jpg" alt="Baklavalar" loading="lazy">
-            <div class="cat-hdr-ov">
-                <span class="cat-icon">🍯</span>
-                <h2 class="cat-title">Baklavalar</h2>
-                <p class="cat-sub">Antep fıstığı & ceviz, el yapımı</p>
-            </div>
-        </div>
-        <div class="items">
-            <div class="item">
-                <div class="item-ico">🍯</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Klasik Baklava</div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺240</div>
-                    <div class="p-kg">KG ₺1.200</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🖤</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Özel Kara Baklava <span class="item-badge">Özel</span></div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺300</div>
-                    <div class="p-kg">KG ₺1.500</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🥐</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Şöbiyet</div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺300</div>
-                    <div class="p-kg">KG ₺1.500</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🐚</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Midye</div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺300</div>
-                    <div class="p-kg">KG ₺1.500</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🥕</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Havuç Dilimi</div>
-                    <div class="item-desc">Porsiyon 150 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺225</div>
-                    <div class="p-kg">KG ₺1.500</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🌰</div>
-                <div class="item-d">
-                    <div class="item-n">Cevizli Baklava</div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺150</div>
-                    <div class="p-kg">KG ₺750</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">🧶</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstıklı Burma Kadayıf</div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺240</div>
-                    <div class="p-kg">KG ₺1.200</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item-ico">👑</div>
-                <div class="item-d">
-                    <div class="item-n">Fıstık Sarma <span class="item-badge">Premium</span></div>
-                    <div class="item-desc">Porsiyon 200 gr</div>
-                </div>
-                <div class="item-prices">
-                    <div class="p-main">₺400</div>
-                    <div class="p-kg">KG ₺2.000</div>
-                </div>
             </div>
         </div>
     </section>
@@ -777,9 +1056,9 @@
 <footer class="footer">
     <div class="footer-logo">Abdülhakim Gurme</div>
     <div class="footer-info">
-        🌶 Adıyaman Usulü Çiğköfte & Baklava<br>
-        📍 Adres bilgisi eklenecek<br>
-        📞 <a href="tel:+905xxxxxxxxx">0 (5XX) XXX XX XX</a><br>
+        🍯 Antep Baklava & Künefe · 🌶 Çiğköfte & Gurme Lezzetler<br>
+        📍 Ziya Gökalp, Ahmet Yesevi Cd. No:8/1, Karaman Merkez<br>
+        📞 <a href="tel:+903382021333">0 (338) 202 13 33</a> &nbsp;|&nbsp; <a href="tel:+905535261888">0 (553) 526 18 88</a><br>
         🕐 Her gün 10:00 – 23:00
     </div>
     <div class="footer-social">
