@@ -1,0 +1,16 @@
+name: Surge Keep-Alive Heartbeat
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Surge URLs
+        run: |
+          curl -s -I https://abdulhakim-gurme.surge.sh | head -n 1
+          curl -s -I https://abdulhakim-menu.surge.sh | head -n 1
+          echo "Surge heartbeat completed successfully"
